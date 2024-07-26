@@ -15,10 +15,6 @@ run/main_scene="res://player.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/scale=5.0
-
 [rendering]
 
 renderer/rendering_method="mobile"
