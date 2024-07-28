@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://chi4jidhvpiuk"]
+[gd_scene load_steps=30 format=3 uid="uid://chi4jidhvpiuk"]
 
+[ext_resource type="Script" path="res://world.gd" id="1_pa5oc"]
 [ext_resource type="Texture2D" uid="uid://bcquejjlt1hyq" path="res://Grass.png" id="1_phsvq"]
 [ext_resource type="Texture2D" uid="uid://7rk4c0uni4sm" path="res://Tilled_Dirt_v2.png" id="2_hgqrx"]
 [ext_resource type="Texture2D" uid="uid://bg1cs6pu1rh46" path="res://Water.png" id="3_ottqa"]
@@ -10,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dd340xt7yflkp" path="res://Wooden_House_Walls_Tilset.png" id="8_wflvo"]
 [ext_resource type="Texture2D" uid="uid://bppmu3uagqyns" path="res://Paths.png" id="9_ew5e5"]
 [ext_resource type="PackedScene" uid="uid://digi512ikshtx" path="res://player.tscn" id="10_8pc56"]
+[ext_resource type="PackedScene" uid="uid://bhhbuqmuaux1h" path="res://growingzone.tscn" id="11_s4o2g"]
+[ext_resource type="PackedScene" uid="uid://cgdh7ou17fh1i" path="res://onion_seedpack.tscn" id="12_7uhrs"]
+[ext_resource type="PackedScene" uid="uid://p56pteduog02" path="res://wheat_seedpack.tscn" id="13_ikc3q"]
+[ext_resource type="Texture2D" uid="uid://crur8426yii8q" path="res://Basic_Plants.png" id="14_nl6kd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_old47"]
 texture = ExtResource("1_phsvq")
@@ -340,7 +345,35 @@ sources/4 = SubResource("TileSetAtlasSource_h2s8j")
 sources/5 = SubResource("TileSetAtlasSource_qags5")
 sources/6 = SubResource("TileSetAtlasSource_hdy2m")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywyal"]
+atlas = ExtResource("14_nl6kd")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dmwf"]
+atlas = ExtResource("14_nl6kd")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uqxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywyal")
+}],
+"loop": true,
+"name": &"onion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dmwf")
+}],
+"loop": true,
+"name": &"wheat",
+"speed": 5.0
+}]
+
 [node name="world" type="Node2D"]
+script = ExtResource("1_pa5oc")
 
 [node name="background" type="TileMap" parent="."]
 show_behind_parent = true
@@ -369,3 +402,47 @@ layer_1/tile_data = PackedInt32Array(524290, 65539, 0, 589826, 3, 0, 655363, 196
 texture_filter = 1
 position = Vector2(361, 165)
 scale = Vector2(3, 3)
+
+[node name="growingzone" parent="." instance=ExtResource("11_s4o2g")]
+position = Vector2(602, 222)
+
+[node name="growingzone2" parent="." instance=ExtResource("11_s4o2g")]
+position = Vector2(602, 162)
+
+[node name="onion_seedpack" parent="." instance=ExtResource("12_7uhrs")]
+position = Vector2(487, 152)
+
+[node name="wheat_seedpack" parent="." instance=ExtResource("13_ikc3q")]
+position = Vector2(488, 206)
+
+[node name="wheattext" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 628.0
+offset_top = 400.0
+offset_right = 668.0
+offset_bottom = 440.0
+scale = Vector2(2, 2)
+text = "= 0"
+
+[node name="wheaticon" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(600, 422)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1uqxr")
+animation = &"wheat"
+
+[node name="oniontext" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 630.0
+offset_top = 465.0
+offset_right = 670.0
+offset_bottom = 505.0
+scale = Vector2(2, 2)
+text = "= 0"
+
+[node name="onionicon" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(596, 491)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1uqxr")
+animation = &"onion"

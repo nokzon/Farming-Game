@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://p56pteduog02"]
+
+[ext_resource type="Script" path="res://wheat_seedpack.gd" id="1_3y5fq"]
+[ext_resource type="Texture2D" uid="uid://crur8426yii8q" path="res://Basic_Plants.png" id="2_m7qm0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0jxa"]
+atlas = ExtResource("2_m7qm0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8abx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0jxa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0k1lc"]
+radius = 5.66667
+
+[node name="wheat_seedpack" type="StaticBody2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_3y5fq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q8abx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.333333)
+shape = SubResource("CircleShape2D_0k1lc")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
