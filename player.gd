@@ -24,3 +24,6 @@ func _physics_process(delta):
 	
 	velocity = motion
 	move_and_slide()
+
+func player_sell_method():
+	pass

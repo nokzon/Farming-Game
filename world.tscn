@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://chi4jidhvpiuk"]
+[gd_scene load_steps=33 format=3 uid="uid://chi4jidhvpiuk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_pa5oc"]
 [ext_resource type="Texture2D" uid="uid://bcquejjlt1hyq" path="res://Grass.png" id="1_phsvq"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cgdh7ou17fh1i" path="res://onion_seedpack.tscn" id="12_7uhrs"]
 [ext_resource type="PackedScene" uid="uid://p56pteduog02" path="res://wheat_seedpack.tscn" id="13_ikc3q"]
 [ext_resource type="Texture2D" uid="uid://crur8426yii8q" path="res://Basic_Plants.png" id="14_nl6kd"]
+[ext_resource type="Texture2D" uid="uid://bwksv3hax26v7" path="res://Chest.png" id="14_xcfps"]
+[ext_resource type="PackedScene" uid="uid://im38i7u6oigl" path="res://sellzone.tscn" id="15_fumga"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_old47"]
 texture = ExtResource("1_phsvq")
@@ -345,6 +347,10 @@ sources/4 = SubResource("TileSetAtlasSource_h2s8j")
 sources/5 = SubResource("TileSetAtlasSource_qags5")
 sources/6 = SubResource("TileSetAtlasSource_hdy2m")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjyn6"]
+atlas = ExtResource("14_xcfps")
+region = Rect2(0, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywyal"]
 atlas = ExtResource("14_nl6kd")
 region = Rect2(80, 16, 16, 16)
@@ -355,6 +361,14 @@ region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1uqxr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjyn6")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ywyal")
@@ -398,11 +412,6 @@ layer_0/tile_data = PackedInt32Array(196614, 65541, 1, 262150, 65541, 1, 196615,
 layer_1/name = "walls"
 layer_1/tile_data = PackedInt32Array(524290, 65539, 0, 589826, 3, 0, 655363, 196611, 0, 524295, 196611, 0, 589831, 3, 1, 655367, 3, 1, 655362, 65539, 2, 524291, 196611, 3, 720899, 65539, 2, 720900, 131075, 2, 524293, 65539, 3, 720901, 131075, 2, 524294, 131075, 3, 720902, 131075, 2, 720903, 196611, 2, 196613, 5, 1, 262150, 196613, 2, 131077, 5, 0, 262149, 5, 2, 131078, 65541, 0, 131079, 65541, 0, 262151, 2, 2, 131080, 65541, 0, 262152, 196613, 2, 131081, 131077, 0, 196617, 131077, 1, 262153, 131077, 2)
 
-[node name="player" parent="." instance=ExtResource("10_8pc56")]
-texture_filter = 1
-position = Vector2(361, 165)
-scale = Vector2(3, 3)
-
 [node name="growingzone" parent="." instance=ExtResource("11_s4o2g")]
 position = Vector2(602, 222)
 
@@ -418,15 +427,15 @@ position = Vector2(488, 206)
 [node name="wheattext" type="RichTextLabel" parent="."]
 texture_filter = 1
 offset_left = 628.0
-offset_top = 400.0
+offset_top = 381.0
 offset_right = 668.0
-offset_bottom = 440.0
+offset_bottom = 421.0
 scale = Vector2(2, 2)
 text = "= 0"
 
 [node name="wheaticon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(600, 422)
+position = Vector2(600, 403)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1uqxr")
 animation = &"wheat"
@@ -434,15 +443,39 @@ animation = &"wheat"
 [node name="oniontext" type="RichTextLabel" parent="."]
 texture_filter = 1
 offset_left = 630.0
-offset_top = 465.0
+offset_top = 426.0
 offset_right = 670.0
-offset_bottom = 505.0
+offset_bottom = 466.0
 scale = Vector2(2, 2)
 text = "= 0"
 
 [node name="onionicon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(596, 491)
+position = Vector2(596, 452)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1uqxr")
 animation = &"onion"
+
+[node name="sellzone" parent="." instance=ExtResource("15_fumga")]
+position = Vector2(306, 264)
+
+[node name="player" parent="." instance=ExtResource("10_8pc56")]
+texture_filter = 1
+position = Vector2(361, 165)
+scale = Vector2(3, 3)
+
+[node name="cointext" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 631.0
+offset_top = 480.0
+offset_right = 671.0
+offset_bottom = 520.0
+scale = Vector2(2, 2)
+text = "= 0"
+
+[node name="coincon" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(599, 501)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1uqxr")
+animation = &"coin"

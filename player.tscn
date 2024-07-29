@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://digi512ikshtx"]
+[gd_scene load_steps=18 format=3 uid="uid://digi512ikshtx"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_umhpy"]
 [ext_resource type="Texture2D" uid="uid://cuyccxk847gmw" path="res://Basic Charakter Spritesheet.png" id="2_k2o04"]
@@ -117,6 +117,10 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcutw"]
+radius = 5.0
+height = 16.0
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_umhpy")
 
@@ -127,3 +131,4 @@ animation = &"idle"
 frame_progress = 0.80719
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wcutw")
