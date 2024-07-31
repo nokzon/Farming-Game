@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://buc80xlwldhyc"]
+
+[ext_resource type="Script" path="res://starfruit_seedpack.gd" id="1_2slux"]
+[ext_resource type="Texture2D" uid="uid://cqa8c7bcjrwrt" path="res://starfruit.png" id="2_v7bob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ysf3"]
+atlas = ExtResource("2_v7bob")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44lb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ysf3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8esb"]
+radius = 5.66667
+
+[node name="starfruit_seedpack" type="StaticBody2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_2slux")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_44lb0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.333333)
+shape = SubResource("CircleShape2D_x8esb")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

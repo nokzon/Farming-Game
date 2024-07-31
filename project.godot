@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 
+[display]
+
+window/size/initial_position_type=0
+
 [input]
 
 click={

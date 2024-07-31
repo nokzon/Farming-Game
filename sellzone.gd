@@ -8,8 +8,8 @@ func _on_area_2d_body_entered(body):
 		
 		#wheats = 3 coins #onions = 5 coins
 		
-		coins += wheats * 3
-		coins += onions * 5
+		coins += wheats * 30
+		coins += onions * 20
 
 		wheats = 0
 		onions = 0
