@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://q2u6ditnfweq"]
+
+[ext_resource type="Script" path="res://chicken.gd" id="1_7ev24"]
+[ext_resource type="Texture2D" uid="uid://b5jeqd2yn3xsj" path="res://Free Chicken Sprites.png" id="2_ocul2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6p8q"]
+atlas = ExtResource("2_ocul2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_modha"]
+atlas = ExtResource("2_ocul2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcx7n"]
+atlas = ExtResource("2_ocul2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bajla"]
+atlas = ExtResource("2_ocul2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_baarn"]
+atlas = ExtResource("2_ocul2")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlqak"]
+atlas = ExtResource("2_ocul2")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbvjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6p8q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_modha")
+}],
+"loop": true,
+"name": &"sleeping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcx7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bajla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_baarn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlqak")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_frepq"]
+radius = 15.0
+
+[node name="chicken" type="CharacterBody2D"]
+script = ExtResource("1_7ev24")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_qbvjh")
+animation = &"walking"
+frame_progress = 0.568844
+
+[node name="changestatetimer" type="Timer" parent="."]
+
+[node name="walkingtimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_frepq")
+
+[connection signal="timeout" from="changestatetimer" to="." method="_on_changestatetimer_timeout"]
+[connection signal="timeout" from="walkingtimer" to="." method="_on_walkingtimer_timeout"]
