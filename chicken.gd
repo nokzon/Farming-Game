@@ -5,7 +5,7 @@ var walking = false
 
 var xdir = 1 # 1 = right -1 = left
 var ydir = 1 # 1 = down -1 = up
-var speed = 50
+var speed = 20
 
 var input = Vector2() #used to be movement
 var moving_horizontal_vertical = 1 # 1 = horizlntal -1 = vertical

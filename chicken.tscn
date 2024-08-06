@@ -60,7 +60,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 6.0
+"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frepq"]
@@ -74,11 +74,13 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qbvjh")
 animation = &"walking"
-frame_progress = 0.568844
+frame_progress = 0.62315
 
 [node name="changestatetimer" type="Timer" parent="."]
+autostart = true
 
 [node name="walkingtimer" type="Timer" parent="."]
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_frepq")
