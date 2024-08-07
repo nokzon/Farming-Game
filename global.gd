@@ -7,3 +7,5 @@ var numofwheats = 0
 var numofonions = 0
 
 var coins = 240
+
+var weather

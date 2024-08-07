@@ -74,7 +74,7 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qbvjh")
 animation = &"walking"
-frame_progress = 0.62315
+frame_progress = 0.57441
 
 [node name="changestatetimer" type="Timer" parent="."]
 autostart = true

@@ -14,7 +14,7 @@ func _ready():
 	walking = true
 	randomize()
 	
-func _physics_process(delta):
+func _physics_process(delta):	
 	#var waittime = 1
 	if walking == false:
 		var x = randi_range(1,2)

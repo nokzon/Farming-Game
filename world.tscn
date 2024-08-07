@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://chi4jidhvpiuk"]
+[gd_scene load_steps=36 format=3 uid="uid://chi4jidhvpiuk"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_pa5oc"]
 [ext_resource type="Texture2D" uid="uid://bcquejjlt1hyq" path="res://Grass.png" id="1_phsvq"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://im38i7u6oigl" path="res://sellzone.tscn" id="15_fumga"]
 [ext_resource type="PackedScene" uid="uid://cj52cq0pee1ji" path="res://shop.tscn" id="18_ojnim"]
 [ext_resource type="PackedScene" uid="uid://q2u6ditnfweq" path="res://chicken.tscn" id="19_ctlfo"]
+[ext_resource type="PackedScene" uid="uid://wbq8e8g0j720" path="res://weather_control.tscn" id="20_metlg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_old47"]
 texture = ExtResource("1_phsvq")
@@ -687,4 +688,6 @@ animation = &"coin"
 position = Vector2(427, 435)
 
 [node name="chicken" parent="." instance=ExtResource("19_ctlfo")]
-position = Vector2(167, 437)
+position = Vector2(215, 448)
+
+[node name="weather_control" parent="." instance=ExtResource("20_metlg")]
